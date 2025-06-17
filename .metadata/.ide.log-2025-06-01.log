@@ -1,0 +1,53 @@
+2025-06-01 11:58:17,056 [INFO] WebApp:191 - Connection restablished
+2025-06-01 11:58:18,520 [INFO] WebApp:194 - Connection lost
+2025-06-01 11:58:18,831 [INFO] WebApp:191 - Connection restablished
+2025-06-01 11:58:18,995 [INFO] WebApp:194 - Connection lost
+2025-06-01 11:58:19,356 [INFO] WebApp:191 - Connection restablished
+2025-06-01 11:59:33,927 [INFO] MainUpdater:2872 - connection check result : 10
+2025-06-01 11:59:34,225 [INFO] McuFinderGlobals:76 - Set McuFinderConnectedMode to true
+2025-06-01 11:59:34,246 [INFO] MultiScanPanel:200 - Auto-refresh data requested => check proxy status ongoing
+2025-06-01 11:59:34,251 [INFO] FinderPluginLoader:95 - Searching for filters in installed packs
+2025-06-01 11:59:37,573 [INFO] LoadUrlFilesThread:185 - End of LoadServerUrlFiles without Thread
+2025-06-01 11:59:37,575 [INFO] DetailPanel:341 - Set advertising image to C:/Users/nehaa/STM32Cube/Repository/\en.summit-h1-25-promotion.jpg
+2025-06-01 11:59:45,145 [INFO] McuFinderGlobals:76 - Set McuFinderConnectedMode to true
+2025-06-01 11:59:45,390 [INFO] ApiDb:448 - Save user favorites file C:\Users\nehaa/.stm32cubeide/favorites.mcus.txt: 0 item(s)
+2025-06-01 11:59:45,390 [INFO] ApiDb:452 - User favorites MCUs=[]
+2025-06-01 12:04:01,932 [INFO] MainUpdater:2872 - connection check result : 10
+2025-06-01 12:04:02,097 [INFO] McuFinderGlobals:76 - Set McuFinderConnectedMode to true
+2025-06-01 12:04:02,104 [INFO] MultiScanPanel:200 - Auto-refresh data requested => check proxy status ongoing
+2025-06-01 12:04:02,106 [INFO] FinderPluginLoader:95 - Searching for filters in installed packs
+2025-06-01 12:04:03,737 [INFO] LoadUrlFilesThread:185 - End of LoadServerUrlFiles without Thread
+2025-06-01 12:04:03,739 [INFO] DetailPanel:341 - Set advertising image to C:/Users/nehaa/STM32Cube/Repository/\en.summit-h1-25-promotion.jpg
+2025-06-01 12:04:19,144 [INFO] MainUpdater:2872 - connection check result : 10
+2025-06-01 12:04:19,264 [INFO] McuFinderGlobals:76 - Set McuFinderConnectedMode to true
+2025-06-01 12:04:19,266 [INFO] MultiScanPanel:200 - Auto-refresh data requested => check proxy status ongoing
+2025-06-01 12:04:19,267 [INFO] FinderPluginLoader:95 - Searching for filters in installed packs
+2025-06-01 12:04:20,173 [INFO] LoadUrlFilesThread:185 - End of LoadServerUrlFiles without Thread
+2025-06-01 12:04:20,173 [INFO] DetailPanel:341 - Set advertising image to C:/Users/nehaa/STM32Cube/Repository/\en.summit-h1-25-promotion.jpg
+2025-06-01 12:04:25,405 [INFO] MultiScanPanel:200 - Auto-refresh data requested => check proxy status ongoing
+2025-06-01 12:04:25,484 [INFO] LoadUrlFilesThread:185 - End of LoadServerUrlFiles without Thread
+2025-06-01 12:04:25,484 [INFO] DetailPanel:341 - Set advertising image to C:/Users/nehaa/STM32Cube/Repository/\en.summit-h1-25-promotion.jpg
+2025-06-01 12:04:58,727 [INFO] McuFinderGlobals:76 - Set McuFinderConnectedMode to true
+2025-06-01 12:04:58,731 [INFO] ApiDb:448 - Save user favorites file C:\Users\nehaa/.stm32cubeide/favorites.mcus.txt: 0 item(s)
+2025-06-01 12:04:58,732 [INFO] ApiDb:452 - User favorites MCUs=[]
+2025-06-01 12:04:58,750 [INFO] ApiDb:448 - Save user favorites file C:\Users\nehaa/.stm32cubeide/favorites.boards.txt: 0 item(s)
+2025-06-01 12:04:58,750 [INFO] ApiDb:452 - User favorites Boards=[]
+2025-06-01 12:12:03,468 [INFO] WebApp:194 - Connection lost
+2025-06-01 12:12:04,905 [INFO] WebApp:191 - Connection restablished
+2025-06-01 12:12:09,308 [INFO] WebApp:194 - Connection lost
+2025-06-01 12:12:09,610 [INFO] WebApp:191 - Connection restablished
+2025-06-01 12:12:34,381 [INFO] WebApp:194 - Connection lost
+2025-06-01 12:12:34,661 [INFO] WebApp:191 - Connection restablished
+2025-06-01 12:12:46,324 [INFO] WebApp:194 - Connection lost
+2025-06-01 12:12:46,607 [INFO] WebApp:191 - Connection restablished
+2025-06-01 12:14:31,311 [INFO] WebApp:194 - Connection lost
+2025-06-01 12:14:31,616 [INFO] WebApp:191 - Connection restablished
+2025-06-01 13:26:57,418 [INFO] WebApp:194 - Connection lost
+2025-06-01 16:41:42,296 [INFO] WebApp:191 - Connection restablished
+2025-06-01 16:41:43,786 [INFO] WebApp:194 - Connection lost
+2025-06-01 16:41:44,158 [INFO] WebApp:191 - Connection restablished
+2025-06-01 17:45:56,971 [INFO] WebApp:194 - Connection lost
+2025-06-01 17:48:20,498 [INFO] WebApp:191 - Connection restablished
+2025-06-01 17:48:21,816 [INFO] WebApp:194 - Connection lost
+2025-06-01 17:48:22,105 [INFO] WebApp:191 - Connection restablished
+2025-06-01 18:58:09,941 [INFO] WebApp:194 - Connection lost

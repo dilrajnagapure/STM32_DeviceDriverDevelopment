@@ -1,0 +1,6 @@
+../Src/main.c:34:5:main	40	static
+../Src/main.c:75:6:i2c_write	24	static
+../Src/main.c:89:6:button_read_polling	40	static
+../Src/main.c:125:6:led_blinking	32	static
+../Src/main.c:149:6:button_interrupt_program	32	static
+../Src/main.c:185:6:EXTI15_10_IRQHandler	8	static
