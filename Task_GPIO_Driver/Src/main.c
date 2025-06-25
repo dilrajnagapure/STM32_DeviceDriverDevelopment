@@ -30,32 +30,76 @@ uint8_t toggle = 0;
 void button_interrupt_program();
 void led_blinking();
 void button_read_polling();
-void i2c_write(void);
+void i2c_write_read_polling(void);
 int main(void)
 {
-	initialise_monitor_handles();
-	printf("Hello Dilraj\n");
+//	initialise_monitor_handles();
+//	printf("Hello Dilraj\n");
 
+//	GPIO_Handle_t I2CPins;
+//	I2CPins.pvGPIOx = GPIOB;
+//	I2CPins.GPIO_PinConfg.pinMode = GPIO_ALT_FUNC;
+//	I2CPins.GPIO_PinConfg.pinOPType = GPIO_OPENDRAIN;
+//	I2CPins.GPIO_PinConfg.pinPuPd = GPIO_NO_PUPD;//GPIO_PULL_UP;GPIO_NO_PUPD
+//	I2CPins.GPIO_PinConfg.pinSpeed = GPIO_MEDIUM_SPEED;//GPIO_HIGH_SPEED;
+//	I2CPins.GPIO_PinConfg.pinAltFunMode = AF4_I2C_1_to_3;
+//
+//	GPIO_PeriClkCtrl(GPIOB,ENABLE);
+//	//scl
+//	I2CPins.GPIO_PinConfg.pinNumber = PIN_NUMBER_8;
+//	GPIO_Init(&I2CPins);
+//
+//	//sda
+//	I2CPins.GPIO_PinConfg.pinNumber = PIN_NUMBER_9;
+//	GPIO_Init(&I2CPins);
+//
+//	I2C_handle i2c1;
+//	uint8_t Txbuffer[]={0x0,0x0,'A'},Rxbuffer[]={0x0,0x0,0};
+//	i2c1.pvI2Cx = I2C1;
+//	i2c1.I2C_Cfg.I2C_FM_mode_dutyCycle = I2C_FM_DUTY_2;
+//	i2c1.I2C_Cfg.I2C_scl_speed = I2C_SPEED_SM;
+//	i2c1.I2C_Cfg.I2C_device_address = 0x61;
+//	i2c1.I2C_Cfg.I2C_AckControl = I2C_ACK_ENABLE;
+//
+//	//peripheral enable
+//	//i2c1.pvI2Cx->I2C_CR1 |= (1<<0);
+//
+//	I2C_Init(&i2c1);
+//
+//	I2C_MasterSendData(&i2c1, Txbuffer, 3, 0x50);
+//	for(uint32_t i=0;i<100000;i++);
+//	I2C_MasterReceiveData(&i2c1, Rxbuffer, 3, 0x50);
+
+	i2c_write_read_polling();
+
+	led_blinking();
+
+	while(1)
+	{;
+	}
+}
+//This function is tested on MB85RC256V I2C FRAM
+void i2c_write_read_polling(void)
+{
 	GPIO_Handle_t I2CPins;
 	I2CPins.pvGPIOx = GPIOB;
 	I2CPins.GPIO_PinConfg.pinMode = GPIO_ALT_FUNC;
 	I2CPins.GPIO_PinConfg.pinOPType = GPIO_OPENDRAIN;
-	I2CPins.GPIO_PinConfg.pinPuPd = GPIO_PULL_UP;
-	I2CPins.GPIO_PinConfg.pinSpeed = GPIO_HIGH_SPEED;
-	I2CPins.GPIO_PinConfg.pinAltFunMode = 4;
+	I2CPins.GPIO_PinConfg.pinPuPd = GPIO_NO_PUPD;//GPIO_PULL_UP;GPIO_NO_PUPD
+	I2CPins.GPIO_PinConfg.pinSpeed = GPIO_MEDIUM_SPEED;//GPIO_HIGH_SPEED;
+	I2CPins.GPIO_PinConfg.pinAltFunMode = AF4_I2C_1_to_3;
 
+	GPIO_PeriClkCtrl(GPIOB,ENABLE);
 	//scl
-	I2CPins.GPIO_PinConfg.pinNumber = PIN_NUMBER_6;
+	I2CPins.GPIO_PinConfg.pinNumber = PIN_NUMBER_8;//SCL pin
 	GPIO_Init(&I2CPins);
 
 	//sda
-	I2CPins.GPIO_PinConfg.pinNumber = PIN_NUMBER_9;
+	I2CPins.GPIO_PinConfg.pinNumber = PIN_NUMBER_9;//SDA pin
 	GPIO_Init(&I2CPins);
 
-	GPIO_PeriClkCtrl(GPIOB,ENABLE);
-
 	I2C_handle i2c1;
-	uint8_t buffer[2]={'A','B'};
+	uint8_t Txbuffer[]={0x0,0x0,'A'},Rxbuffer[]={0x0,0x0,0};
 	i2c1.pvI2Cx = I2C1;
 	i2c1.I2C_Cfg.I2C_FM_mode_dutyCycle = I2C_FM_DUTY_2;
 	i2c1.I2C_Cfg.I2C_scl_speed = I2C_SPEED_SM;
@@ -63,28 +107,13 @@ int main(void)
 	i2c1.I2C_Cfg.I2C_AckControl = I2C_ACK_ENABLE;
 
 	//peripheral enable
-	i2c1.pvI2Cx->I2C_CR1 |= (1<<0);
+	//i2c1.pvI2Cx->I2C_CR1 |= (1<<0);
 
 	I2C_Init(&i2c1);
 
-	I2C_MasterSendData(&i2c1, buffer, 2, 0x50);
-	while(1)
-	{;
-	}
-}
-void i2c_write(void)
-{
-	I2C_handle i2c1;
-	uint8_t buffer[2]={'A','B'};
-	i2c1.pvI2Cx = I2C1;
-	i2c1.I2C_Cfg.I2C_FM_mode_dutyCycle = I2C_FM_DUTY_2;
-	//i2c1.I2C_Cfg.i2c_mode = STANDARD;
-	//i2c1.I2C_Cfg.pclk_freq = I2C_SPEED_SM;
-	//i2c1.I2C_Cfg.slave_address = 0x50;
-
-	I2C_PeriClkCtrl(i2c1.pvI2Cx,SET);
-	I2C_Init(&i2c1);
-	I2C_MasterSendData(&i2c1,buffer, 2,0x50);
+	I2C_MasterSendData(&i2c1, Txbuffer, 3, 0x50);
+	for(uint32_t i=0;i<100000;i++);
+	I2C_MasterReceiveData(&i2c1, Rxbuffer, 3, 0x50);
 }
 void button_read_polling()
 {

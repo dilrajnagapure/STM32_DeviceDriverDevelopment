@@ -8,7 +8,7 @@
 
 static uint8_t I2C_checkFlags(I2C_RegDef_t *pvI2Cx,I2C_SR1_Flags_t flag);
 static void I2C_GenerateStartCondition(I2C_RegDef_t *pvI2Cx);
-static void I2C_ExecuteAddressphase(I2C_RegDef_t *pvI2Cx,uint8_t address);
+static void I2C_ExecuteAddressphase(I2C_RegDef_t *pvI2Cx,uint8_t address,uint8_t write_read);
 static void I2C_ClearADDRFlag(I2C_RegDef_t *pvI2Cx);
 static void I2C_GenerateStopCondition(I2C_RegDef_t *pvI2Cx);
 
@@ -24,7 +24,7 @@ void I2C_Init(I2C_handle *pvI2C_handle)
 	I2C_PeriClkCtrl(pvI2C_handle->pvI2Cx,ENABLE);
 
 	//ack control bit
-	tempreg |= pvI2C_handle->I2C_Cfg.I2C_AckControl << 10;
+	tempreg |= (pvI2C_handle->I2C_Cfg.I2C_AckControl << 10);
 	pvI2C_handle->pvI2Cx->I2C_CR1 = tempreg;
 
 	//configure FREQ field of CR2
@@ -76,6 +76,9 @@ void I2C_Init(I2C_handle *pvI2C_handle)
 		tempreg = ((RCC_GetPCLK1Value()*300) / (1000000000))+1;
 	}
 	pvI2C_handle->pvI2Cx->I2C_TRISE = (tempreg & 0x3F);
+
+	//peripheral enable
+	pvI2C_handle->pvI2Cx->I2C_CR1 |= (1<<0);
 }
 void I2C_MasterSendData(I2C_handle *pvI2C_handle,uint8_t *pTxBuffer, uint16_t len,uint8_t address)
 {
@@ -85,9 +88,13 @@ void I2C_MasterSendData(I2C_handle *pvI2C_handle,uint8_t *pTxBuffer, uint16_t le
 	//wait for SB flag to be set
 	while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,SB));
 
+	//Read SR1 register to clear SB
+	uint32_t dummyRead = pvI2C_handle->pvI2Cx->I2C_SR1;
+	(void)dummyRead;
+
 	// write address to the DR register
 	//7-bit address and set write bit for master transmission
-	I2C_ExecuteAddressphase(pvI2C_handle->pvI2Cx,address);
+	I2C_ExecuteAddressphase(pvI2C_handle->pvI2Cx,address,0);
 
 	//Reading I2C_SR2 after reading I2C_SR1 clears the ADDR flag, even if the ADDR flag was
 	//set after reading I2C_SR1.
@@ -99,7 +106,6 @@ void I2C_MasterSendData(I2C_handle *pvI2C_handle,uint8_t *pTxBuffer, uint16_t le
 	//write the data to data register
 	while(len)
 	{
-
 		while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,TxE));
 		pvI2C_handle->pvI2Cx->I2C_DR = *pTxBuffer;
 		pTxBuffer++;
@@ -109,6 +115,77 @@ void I2C_MasterSendData(I2C_handle *pvI2C_handle,uint8_t *pTxBuffer, uint16_t le
 	while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,TxE));
 	//byte transmission finished
 	while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,BTF));
+	//Give stop condition
+	I2C_GenerateStopCondition(pvI2C_handle->pvI2Cx);
+}
+
+void I2C_MasterReceiveData(I2C_handle *pvI2C_handle,uint8_t *pTxBuffer, uint16_t len,uint8_t address)
+{
+	//Generate start condition
+	I2C_GenerateStartCondition(pvI2C_handle->pvI2Cx);
+
+	//wait for SB flag to be set
+	while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,SB));
+
+	//Read SR1 register to clear SB
+	uint32_t dummyRead = pvI2C_handle->pvI2Cx->I2C_SR1;
+	(void)dummyRead;
+
+	// write address to the DR register
+	//7-bit address and set read bit for master transmission
+	I2C_ExecuteAddressphase(pvI2C_handle->pvI2Cx,address,0);
+
+	//Reading I2C_SR2 after reading I2C_SR1 clears the ADDR flag, even if the ADDR flag was
+	//set after reading I2C_SR1.
+	while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,ADDR));
+
+	I2C_ClearADDRFlag(pvI2C_handle->pvI2Cx);
+
+	//shift register and data register empty
+	//write the data to data register
+	//this is only added since testing on I2C FRAM MB85RC256V
+	uint8_t memory_address_bytes = 2;
+	while(memory_address_bytes)
+	{
+		while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,TxE));
+		pvI2C_handle->pvI2Cx->I2C_DR = *pTxBuffer;
+		pTxBuffer++;
+		memory_address_bytes--;
+	}
+	while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,TxE));
+
+	len -= 2;
+	//Generate  Repeated start condition
+	I2C_GenerateStartCondition(pvI2C_handle->pvI2Cx);
+
+	//wait for SB flag to be set
+	while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,SB));
+
+	//Read SR1 register to clear SB
+	dummyRead = pvI2C_handle->pvI2Cx->I2C_SR1;
+	(void)dummyRead;
+
+	// write address to the DR register
+	//7-bit address and set read bit for master transmission
+	I2C_ExecuteAddressphase(pvI2C_handle->pvI2Cx,address,1);
+
+	//Reading I2C_SR2 after reading I2C_SR1 clears the ADDR flag, even if the ADDR flag was
+	//set after reading I2C_SR1.
+	while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,ADDR));
+
+	I2C_ClearADDRFlag(pvI2C_handle->pvI2Cx);
+	while(len)
+	{
+		while(!I2C_checkFlags(pvI2C_handle->pvI2Cx,RxNE));
+		*pTxBuffer = pvI2C_handle->pvI2Cx->I2C_DR;
+		pTxBuffer++;
+		len--;
+	}
+
+	//nack send
+	uint32_t tempreg = (~(pvI2C_handle->I2C_Cfg.I2C_AckControl) << 10);
+	pvI2C_handle->pvI2Cx->I2C_CR1 = tempreg;
+
 	//Give stop condition
 	I2C_GenerateStopCondition(pvI2C_handle->pvI2Cx);
 }
@@ -125,11 +202,11 @@ static void I2C_GenerateStopCondition(I2C_RegDef_t *pvI2Cx)
 	pvI2Cx->I2C_CR1 |= (1 << I2C_STOP_BIT);
 
 }
-static void I2C_ExecuteAddressphase(I2C_RegDef_t *pvI2Cx,uint8_t address)
+static void I2C_ExecuteAddressphase(I2C_RegDef_t *pvI2Cx,uint8_t address,uint8_t write_read)
 {
-	address |= (address<<1);
-	address &= ~(1);
-	pvI2Cx->I2C_DR |= address;
+	address = (address<<1);
+	address |= ((write_read & 0x1)<<0);
+	pvI2Cx->I2C_DR = address;
 }
 
 static void I2C_ClearADDRFlag(I2C_RegDef_t *pvI2Cx)

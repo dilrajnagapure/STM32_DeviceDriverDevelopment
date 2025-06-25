@@ -17,7 +17,7 @@ typedef struct
 	uint8_t pinOPType; /*Refer @type of GPIO Output type*/
 	uint8_t pinSpeed; /*Refer @type of GPIO output speed*/
 	uint8_t pinPuPd; /*Refer @type of GPIO Pull up , pull down settings*/
-	uint8_t pinAltFunMode; /*Refer @*/
+	uint8_t pinAltFunMode; /*Refer @type of GPIO Alt Func*/
 }GPIO_PinConfg_t;
 
 /*GPIO handle, consists GPIO base address and pin configuration*/
@@ -26,6 +26,28 @@ typedef struct
 	GPIO_RegDef_t *pvGPIOx;
 	GPIO_PinConfg_t GPIO_PinConfg;
 }GPIO_Handle_t;
+
+/*@type of GPIO Alt Func*/
+typedef enum
+{
+	AF0_system, /*system*/
+	AF1_TIM1_TIM2, /*TIM1/TIM2*/
+	AF2_TIM_3_to_5, /*TIM3..5*/
+	AF3_TIM_9to_11, /*TIM9..11*/
+	AF4_I2C_1_to_3, /*I2C1..3*/
+	AF5_SPI_1_to_4, /*SPI1..4*/
+	AF6_SPI3, /*SPI3*/
+	AF7_USART_1_to_2, /*USART1..2*/
+	AF8_USART_6, /*USART6*/
+	AF9_I2C_2_3, /*I2C2..3*/
+	AF10_OTG_FS, /*OTG_FS*/
+	AF11, /*system*/
+	AF12_SDIO, /*SDIO*/
+	AF13, /*system*/
+	AF14, /*system*/
+	AF15_EVENTOUT, /*EVENTOUT*/
+}GPIO_AltFunc_t;
+
 
 /*@type of GPIO modes*/
 typedef enum

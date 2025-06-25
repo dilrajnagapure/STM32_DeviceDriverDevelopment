@@ -58,6 +58,23 @@ void GPIO_Init(GPIO_Handle_t *pvGPIO_handle)
 		temp = 0;
 		temp = (pvGPIO_handle->GPIO_PinConfg.pinSpeed << ( 2 * pvGPIO_handle->GPIO_PinConfg.pinNumber));
 		pvGPIO_handle->pvGPIOx->OSPEEDR |= temp;
+
+		//alternate function selection
+		//for alternate function high register
+		uint8_t pin_number = pvGPIO_handle->GPIO_PinConfg.pinNumber;
+		if(pin_number>7)
+		{
+			temp=0;
+			temp = ((pvGPIO_handle->GPIO_PinConfg.pinAltFunMode << ((pin_number-8)*4)));
+			pvGPIO_handle->pvGPIOx->AFR[1] |= temp;
+		}
+		//for alternate function low register
+		else
+		{
+			temp=0;
+			temp = ((pvGPIO_handle->GPIO_PinConfg.pinAltFunMode << (pin_number*4)));
+			pvGPIO_handle->pvGPIOx->AFR[0] |= temp;
+		}
 	}
 	else /*EXTI : Interrupt related initialization*/
 	{
@@ -82,6 +99,8 @@ void GPIO_Init(GPIO_Handle_t *pvGPIO_handle)
 		SYSCFG->SYSCFG_EXTICR[temp1] |= SYSCFG_EXTICR_PORT_SELECT(pvGPIO_handle->pvGPIOx) << (temp2 * 4);
 
 	}
+
+
 
 	//pull up-down configuration
 	temp = 0;

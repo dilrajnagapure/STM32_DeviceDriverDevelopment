@@ -1,22 +1,28 @@
-2025-06-16 15:37:06,358 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Exception in thread "AWT-EventQueue-0" org.eclipse.swt.SWTException: Device is disposed
-2025-06-16 15:37:06,544 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.swt.SWT.error(SWT.java:4922)
-2025-06-16 15:37:06,547 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.swt.SWT.error(SWT.java:4837)
-2025-06-16 15:37:06,549 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.swt.SWT.error(SWT.java:4808)
-2025-06-16 15:37:06,552 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.swt.widgets.Display.error(Display.java:1311)
-2025-06-16 15:37:06,554 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.swt.widgets.Display.asyncExec(Display.java:786)
-2025-06-16 15:37:06,556 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.common.mx.oss.core.awtswtbridge.AwtEnvironment$2.run(AwtEnvironment.java:168)
-2025-06-16 15:37:06,570 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
-2025-06-16 15:37:06,572 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
-2025-06-16 15:37:06,574 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
-2025-06-16 15:37:06,577 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
-2025-06-16 15:37:06,581 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-2025-06-16 15:37:06,584 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
-2025-06-16 15:37:06,586 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
-2025-06-16 15:37:06,591 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
-2025-06-16 15:37:06,594 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
-2025-06-16 15:37:06,598 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
-2025-06-16 15:37:06,601 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
-2025-06-16 15:37:06,606 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-2025-06-16 15:37:06,608 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
-2025-06-16 15:37:07,327 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
-2025-06-16 15:37:07,329 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-06-25 12:21:35,819 [ERROR] ConfigurationRetriever:142 - IOException on connection: Connect timed out
+2025-06-25 12:21:41,507 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2025-06-25 13:02:32,244 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2025-06-25 13:09:51,619 [INFO] WebApp:194 - Connection lost
+2025-06-25 13:12:01,889 [INFO] WebApp:191 - Connection restablished
+2025-06-25 13:37:46,408 [INFO] WebApp:194 - Connection lost
+2025-06-25 14:28:19,494 [INFO] WebApp:191 - Connection restablished
+2025-06-25 15:18:12,440 [ERROR] ConfigurationRetriever:142 - IOException on connection: Connect timed out
+2025-06-25 15:18:14,443 [ERROR] ConfigurationRetriever:142 - IOException on connection: Connect timed out
+2025-06-25 15:18:16,639 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2025-06-25 15:40:14,808 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2025-06-25 15:40:23,272 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2025-06-25 15:43:18,827 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2025-06-25 15:43:18,827 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2025-06-25 15:43:18,829 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2025-06-25 15:43:18,847 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2025-06-25 15:43:18,848 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2025-06-25 15:43:18,848 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2025-06-25 15:49:39,424 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2025-06-25 15:49:41,426 [ERROR] ConfigurationRetriever:142 - IOException on connection: Connect timed out
+2025-06-25 15:49:43,461 [ERROR] ConfigurationRetriever:142 - IOException on connection: Connect timed out
+2025-06-25 15:49:45,463 [ERROR] ConfigurationRetriever:142 - IOException on connection: Connect timed out
+2025-06-25 16:08:15,606 [INFO] WebApp:194 - Connection lost
+2025-06-25 16:12:03,667 [INFO] WebApp:191 - Connection restablished
+2025-06-25 16:12:05,548 [INFO] WebApp:194 - Connection lost
+2025-06-25 16:12:05,789 [INFO] WebApp:191 - Connection restablished
+2025-06-25 16:13:48,599 [INFO] WebApp:194 - Connection lost
+2025-06-25 16:13:49,001 [INFO] WebApp:191 - Connection restablished

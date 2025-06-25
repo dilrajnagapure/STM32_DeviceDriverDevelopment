@@ -34,6 +34,7 @@ typedef enum
 	BTF,      // Byte transfer finished
 	ADD10,    // 10-bit header sent (Master mode)
 	STOPF,    // Stop detection (slave mode)
+	RES,	  // Reserve
 	RxNE,     // Data register not empty (receivers)
 	TxE,      // Data register empty (transmitters)
 	BERR,     // Bus error
@@ -64,6 +65,7 @@ typedef struct
 void I2C_Init(I2C_handle *pvI2C_handle);
 void I2C_DeInit(I2C_handle *pvI2C_handle);
 void I2C_MasterSendData(I2C_handle *pvI2C_handle,uint8_t *pTxBuffer, uint16_t len,uint8_t address);
+void I2C_MasterReceiveData(I2C_handle *pvI2C_handle,uint8_t *pTxBuffer, uint16_t len,uint8_t address);
 void I2C_PeriClkCtrl(I2C_RegDef_t *pvI2Cx,uint8_t EnDis);
 uint32_t RCC_GetPCLK1Value(void);
 uint32_t RCC_GetPLLOutput();
