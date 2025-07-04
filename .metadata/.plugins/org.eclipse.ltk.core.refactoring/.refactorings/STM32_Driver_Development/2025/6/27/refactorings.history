@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;STM32_Driver_Development/Src/main.c&apos; to &apos;I2C_TxRx_Polling.c&apos;" description="Rename resource &apos;main.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Src/main.c" name="I2C_TxRx_Polling.c" stamp="1751200270652" updateReferences="true"/>
+</session>

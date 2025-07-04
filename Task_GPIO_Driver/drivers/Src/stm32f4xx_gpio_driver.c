@@ -43,6 +43,10 @@ void GPIO_PeriClkCtrl(GPIO_RegDef_t *pvGPIOx,uint8_t EnDis)
 void GPIO_Init(GPIO_Handle_t *pvGPIO_handle)
 {
 	uint32_t temp = 0;
+
+	//enable peripheral clock
+	GPIO_PeriClkCtrl(pvGPIO_handle->pvGPIOx,ENABLE);
+
 	//mode configuration
 	if(pvGPIO_handle->GPIO_PinConfg.pinMode <= GPIO_ANALOG)
 	{

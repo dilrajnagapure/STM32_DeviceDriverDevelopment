@@ -1,0 +1,146 @@
+/*
+ * stm32f4xx_spi_driver.c
+ *
+ *  Created on: Apr 2, 2025
+ *      Author: 35596
+ */
+
+#include "stm32f4xx_spi_driver.h"
+
+
+void SPI_Init(SPI_Handle_t *pvSPI_handle)
+{
+	//first let configure the SPI_CR1 register
+
+	uint32_t tempreg =0;
+
+	//set device mode, master/slave
+	tempreg |= ( pvSPI_handle->SPIConfig.SPI_DeviceMode << 2 );
+
+	//set communication modes
+	if(pvSPI_handle->SPIConfig.SPI_BusConfig == SPI_FULL_DUPLEX)
+	{
+		//BIDI mode is cleared
+		tempreg &= ~(1 << 15);
+	}
+	else if(pvSPI_handle->SPIConfig.SPI_BusConfig == SPI_HALF_DUPLEX)
+	{
+		//BIDI mode is Set
+		tempreg |= (1 << 15);
+	}
+	else//simplex
+	{
+		//BIDI mode is cleared
+		//RXONLY is set
+		tempreg &= ~(1 << 15);
+		tempreg |= (1 << 10);
+	}
+
+	//set clock speed
+	if(pvSPI_handle->SPIConfig.SPI_SclkSpeed == SPI_BAUDRATE_FPCLK_2)
+	{
+		tempreg |= ( 0<<2 );
+	}
+	else if(pvSPI_handle->SPIConfig.SPI_SclkSpeed == SPI_BAUDRATE_FPCLK_4)
+	{
+		tempreg |= ( 1<<2 );
+	}
+	else if(pvSPI_handle->SPIConfig.SPI_SclkSpeed == SPI_BAUDRATE_FPCLK_8)
+	{
+		tempreg |= ( 2<<2 );
+	}
+	else if(pvSPI_handle->SPIConfig.SPI_SclkSpeed == SPI_BAUDRATE_FPCLK_16)
+	{
+		tempreg |= ( 3<<2 );
+	}
+	else if(pvSPI_handle->SPIConfig.SPI_SclkSpeed == SPI_BAUDRATE_FPCLK_32)
+	{
+		tempreg |= ( 4<<2 );
+	}
+	else if(pvSPI_handle->SPIConfig.SPI_SclkSpeed == SPI_BAUDRATE_FPCLK_64)
+	{
+		tempreg |= ( 5<<2 );
+	}
+	else if(pvSPI_handle->SPIConfig.SPI_SclkSpeed == SPI_BAUDRATE_FPCLK_128)
+	{
+		tempreg |= ( 6<<2 );
+	}
+	else if(pvSPI_handle->SPIConfig.SPI_SclkSpeed == SPI_BAUDRATE_FPCLK_256)
+	{
+		tempreg |= ( 7<<2 );
+	}
+
+	//set data format
+	if(pvSPI_handle->SPIConfig.SPI_DFF == SPI_DFF_8BIT)
+	{
+		tempreg &= ~( 1<<11 );
+	}
+	else if(pvSPI_handle->SPIConfig.SPI_DFF == SPI_DFF_16BIT)
+	{
+		tempreg |= ( 1<<11 );
+	}
+
+	//set clock polarity
+	if(pvSPI_handle->SPIConfig.SPI_CPOL == SPI_CPOL_HIGH)
+	{
+		tempreg |= ( 1<<1 );
+	}
+	else
+	{
+		tempreg &= ~( 1<<1 );
+	}
+
+	//set clock phase
+	if(pvSPI_handle->SPIConfig.SPI_CPOL == SPI_CPHA_HIGH)
+	{
+		tempreg |= ( 1<<0 );
+	}
+	else
+	{
+		tempreg &= ~( 1<<0 );
+	}
+
+	//set software slave select
+	if( pvSPI_handle->SPIConfig.SPI_SSM == SPI_SSM_ENABLE )
+	{
+		tempreg |= ( 1<<9 );
+	}
+	else
+	{
+		tempreg &= ~( 1<<9 );
+	}
+}
+
+void SPI_PeriClkCtrl(SPI_RegDef_t * pvSPIx,uint8_t EnDis)
+{
+	if(EnDis == ENABLE)
+	{
+		if( pvSPIx == SPI1 )
+		{
+			SPI1_PCLK_EN();
+		}
+		else if( pvSPIx == SPI2 )
+		{
+			SPI2_PCLK_EN();
+		}
+		else if( pvSPIx == SPI3 )
+		{
+			SPI3_PCLK_EN();
+		}
+	}
+	else
+	{
+		if( pvSPIx == SPI1 )
+		{
+			SPI1_PCLK_DI();
+		}
+		else if( pvSPIx == SPI2 )
+		{
+			SPI2_PCLK_DI();
+		}
+		else if( pvSPIx == SPI3 )
+		{
+			SPI3_PCLK_DI();
+		}
+	}
+}

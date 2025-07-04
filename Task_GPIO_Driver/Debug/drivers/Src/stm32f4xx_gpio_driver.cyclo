@@ -1,0 +1,8 @@
+../drivers/Src/stm32f4xx_gpio_driver.c:10:6:GPIO_PeriClkCtrl	8
+../drivers/Src/stm32f4xx_gpio_driver.c:43:6:GPIO_Init	8
+../drivers/Src/stm32f4xx_gpio_driver.c:116:7:GPIO_DeInit	3
+../drivers/Src/stm32f4xx_gpio_driver.c:127:7:GPIO_PinWrite	2
+../drivers/Src/stm32f4xx_gpio_driver.c:138:10:GPIO_PinRead	2
+../drivers/Src/stm32f4xx_gpio_driver.c:148:7:GPIO_IRQInterruptConfig	16
+../drivers/Src/stm32f4xx_gpio_driver.c:189:7:GPIO_IRQPriorityConfig	1
+../drivers/Src/stm32f4xx_gpio_driver.c:199:7:GPIO_IRQHandler	2

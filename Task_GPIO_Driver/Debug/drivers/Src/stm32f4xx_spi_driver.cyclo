@@ -1,0 +1,13 @@
+../drivers/Src/stm32f4xx_spi_driver.c:11:6:SPI_Init	4
+../drivers/Src/stm32f4xx_spi_driver.c:75:6:SPI_MasterSendData	4
+../drivers/Src/stm32f4xx_spi_driver.c:105:6:SPI_MasterReceiveData	6
+../drivers/Src/stm32f4xx_spi_driver.c:136:6:SPI_MasterReceiveDataIT	1
+../drivers/Src/stm32f4xx_spi_driver.c:145:6:SPI_MasterSendDataIT	1
+../drivers/Src/stm32f4xx_spi_driver.c:155:6:SPI_EV_Handling	11
+../drivers/Src/stm32f4xx_spi_driver.c:224:6:SPI_Close	1
+../drivers/Src/stm32f4xx_spi_driver.c:228:6:SPI_TXEIE_Close	1
+../drivers/Src/stm32f4xx_spi_driver.c:237:6:SPI_RXNEIE_Close	1
+../drivers/Src/stm32f4xx_spi_driver.c:246:6:SPI_PeriClkCtrl	8
+../drivers/Src/stm32f4xx_spi_driver.c:280:6:SPI_IgnoreNSSPin	2
+../drivers/Src/stm32f4xx_spi_driver.c:292:6:SPI_IRQInterruptConfig	16
+../drivers/Src/stm32f4xx_spi_driver.c:333:6:SPI_IRQPriorityConfig	1

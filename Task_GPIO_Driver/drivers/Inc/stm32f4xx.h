@@ -27,6 +27,7 @@
 
 #define CM4_INT_PRI_BIT_IMPLEMENTATION  4
 
+//NVIC IRQ numbers
 #define  IRQ_NO_EXTI0                          6 /*position*/
 #define  IRQ_NO_EXTI1                          7
 #define  IRQ_NO_EXTI2                          8
@@ -34,7 +35,10 @@
 #define  IRQ_NO_EXTI4                          10
 #define  IRQ_NO_EXTI9_5                        23
 #define  IRQ_NO_EXTI15_10                      40
-
+#define  IRQ_NO_I2C1_EV                        31
+#define  IRQ_NO_I2C1_ER                        32
+#define  IRQ_NO_SPI1_EV                        35
+#define  IRQ_NO_SPI2_EV                        36
 
 
 /*MCU Memory Addresses*/

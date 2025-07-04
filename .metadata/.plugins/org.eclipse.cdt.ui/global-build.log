@@ -1,20 +1,21 @@
-16:31:51 **** Incremental Build of configuration Debug for project STM32_Driver_Development ****
+16:56:04 **** Incremental Build of configuration Debug for project STM32_Driver_Development ****
 make -j8 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f4xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"C:/Work/STM32_Driver_workspace/Task_GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f4xx_gpio_driver.d" -MT"drivers/Src/stm32f4xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f4xx_gpio_driver.o"
-arm-none-eabi-gcc "../drivers/Src/stm32f4xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"C:/Work/STM32_Driver_workspace/Task_GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f4xx_i2c_driver.d" -MT"drivers/Src/stm32f4xx_i2c_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f4xx_i2c_driver.o"
-arm-none-eabi-gcc "../drivers/Src/stm32f4xx_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"C:/Work/STM32_Driver_workspace/Task_GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f4xx_spi_driver.d" -MT"drivers/Src/stm32f4xx_spi_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f4xx_spi_driver.o"
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f401retx.d" -MT"Startup/startup_stm32f401retx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f401retx.o" "../Startup/startup_stm32f401retx.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"C:/Work/STM32_Driver_workspace/Task_GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"C:/Work/STM32_Driver_workspace/Task_GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"C:/Work/STM32_Driver_workspace/Task_GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/SPI_TxRx_Interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"C:/Work/STM32_Driver_workspace/Task_GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/SPI_TxRx_Interrupt.d" -MT"Src/SPI_TxRx_Interrupt.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/SPI_TxRx_Interrupt.o"
 arm-none-eabi-gcc -o "STM32_Driver_Development.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Work\STM32_Driver_workspace\Task_GPIO_Driver\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_Driver_Development.map" -Wl,--gc-sections -nostartfiles -nostdlib -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: STM32_Driver_Development.elf
  
 arm-none-eabi-size  STM32_Driver_Development.elf 
 arm-none-eabi-objdump -h -S STM32_Driver_Development.elf  > "STM32_Driver_Development.list"
    text	   data	    bss	    dec	    hex	filename
-   3236	     24	   1544	   4804	   12c4	STM32_Driver_Development.elf
+   3028	      0	   1592	   4620	   120c	STM32_Driver_Development.elf
 Finished building: default.size.stdout
  
 Finished building: STM32_Driver_Development.list
+ 
+16:56:17 **** Incremental Build of configuration Debug for project STM32_Driver_Development ****
+make -j8 all 
+arm-none-eabi-size  STM32_Driver_Development.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3028	      0	   1592	   4620	   120c	STM32_Driver_Development.elf
+Finished building: default.size.stdout
  
