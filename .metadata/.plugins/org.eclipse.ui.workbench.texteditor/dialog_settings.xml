@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="true"/>
+	<list key="searchhistory">
+		<item value="I2CPins"/>
+		<item value="I2C"/>
+		<item value="pTxBuffer"/>
+		<item value="10"/>
+		<item value="@i2c_modes"/>
+		<item value="I2C_ClearADDRFlag"/>
+		<item value="@type of GPIO modes"/>
+		<item value="__libc_init_array"/>
+	</list>
+	<list key="replacehistory">
+		<item value="SPIPins"/>
+		<item value="SPI"/>
+		<item value="pRxBuffer"/>
+	</list>
+</section>
